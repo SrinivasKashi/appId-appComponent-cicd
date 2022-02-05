@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.skr.ci</groupId>
-	<artifactId>componentName</artifactId>
+	<artifactId>appComponent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>appId-appComponent-cicd</name>
 	<description>CI Github Action </description>
@@ -181,7 +181,7 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub Packages</name>
-			<url>https://maven.pkg.github.com/judebantony/cicd-github-action-example</url>
+			<url>https://maven.pkg.github.com/SrinivasKashi/appId-appComponent-cicd</url>
 		</repository>
 	</distributionManagement>
 
