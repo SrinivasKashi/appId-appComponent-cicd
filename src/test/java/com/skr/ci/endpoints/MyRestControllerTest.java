@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jba.ci.endpoints;
+package com.skr.ci.endpoints;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -14,15 +14,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-/**
- * @author judebarnabasantony
- *
- */
-@ExtendWith(SpringExtension.class)
-@WebMvcTest(CIGitHubActionRestController.class)
-public class CIGitHubActionRestControllerTest {
 
-	private static final String API_V1_CI_HEALTH = "/api/v1/ci/health";
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(MyRestController.class)
+public class MyRestControllerTest {
+
+	private static final String API_V1_CI_HEALTH = "/api/v1/skr/health";
 	
 	@Autowired
 	private MockMvc mockMvc;

@@ -1,18 +1,15 @@
-package com.jba.ci;
+package com.skr.ci;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * @author judebarnabasantony
- *
- */
+
 
 @SpringBootApplication
-public class CIGitHubActionApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CIGitHubActionApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
