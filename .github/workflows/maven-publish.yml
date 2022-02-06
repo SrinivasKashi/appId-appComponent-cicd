@@ -32,3 +32,6 @@ jobs:
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
+   
+  call-docker-build:
+    uses: ./.github/workflows/docker-image.yml
