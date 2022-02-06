@@ -34,4 +34,4 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
    
   call-docker-build:
-    uses: ./.github/workflows/docker-image.yml@main
+    uses: ./.github/workflows/docker-image.yml
