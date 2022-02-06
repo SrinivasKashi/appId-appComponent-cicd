@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.skr.ci</groupId>
-	<artifactId>appComponent</artifactId>
+	<artifactId>appid-appcomponent-cicd</artifactId>
 	<version>1.0.0</version>
 	<name>appId-appComponent-cicd</name>
 	<description>CI Github Action </description>
