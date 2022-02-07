@@ -33,6 +33,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
   Docker_Build:
+    needs: [CI]
     uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/docker-image.yml@main
   Sonar_Scan:
       uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/sonar.yml@main
