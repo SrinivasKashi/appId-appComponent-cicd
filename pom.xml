@@ -11,9 +11,12 @@
 	</parent>
 	<groupId>com.skr.ci</groupId>
 	<artifactId>appid-appcomponent-cicd</artifactId>
-	<version>1.0.0</version>
+	<version>${revision}</version>
 	<name>appId-appComponent-cicd</name>
 	<description>CI Github Action </description>
+	<properties>
+    <revision>1.0.0</revision>
+  </properties>
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>2021.0.0</spring-cloud.version>
