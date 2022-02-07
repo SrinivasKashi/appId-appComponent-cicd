@@ -32,7 +32,7 @@ jobs:
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
-    #- name: Docker Build
-    #  uses: ./.github/workflows/docker-image.yml
+    - name: Docker Build
+      uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/docker-image.yml@main
     - name: Sonar Scan
-      uses: ./.github/workflows/sonar.yml
+      uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/sonar.yml@main
