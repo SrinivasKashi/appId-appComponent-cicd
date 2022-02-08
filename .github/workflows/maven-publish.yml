@@ -48,6 +48,27 @@ jobs:
         - name: trufflehog-actions-scan
           uses: edplato/trufflehog-actions-scan@master
           with:
-            scanArguments: "--regex --entropy=False --max_depth=5" 
+            scanArguments: "--regex --entropy=False --max_depth=5"
+            
+  blackduck:
+      name: SCA Scan using BlackDuck
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out the code
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+        - name: Set up JDK
+          uses: actions/setup-java@v1
+          with:
+            java-version: 1.8
+        - name: Set up Maven
+          run: mvn -N io.takari:maven:wrapper -Dmaven=3.8.2
+        - name: Build with Maven
+          run: |
+            mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+            mvn test -B
+        - name: Upload to CoPilot
+          run: bash <(curl -s https://copilot.blackducksoftware.com/ci/githubactions/scripts/upload)            
       
     
