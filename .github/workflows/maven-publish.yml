@@ -37,3 +37,17 @@ jobs:
     uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/docker-image.yml@main
   Sonar_Scan:
       uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/sonar.yml@main
+  trufflehogScan:
+      name: Secret Scan Using Trufflehog
+      runs-on: ubuntu-latest      
+      steps:
+        - name: Check out the code
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+        - name: trufflehog-actions-scan
+          uses: edplato/trufflehog-actions-scan@master
+          with:
+            scanArguments: "--regex --entropy=False --max_depth=5" 
+      
+    
