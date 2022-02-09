@@ -48,7 +48,7 @@ jobs:
     - name: Step 2 - GitHub Action if statement (true)
       env: 
         WHO_TO_TRUST: ${{ secrets.SNYK_TOKEN }}
-        run: echo ${{ secrets.SNYK_TOKEN }}   
+      run: echo ${{ secrets.SNYK_TOKEN }}   
   Docker_Build:
     needs: [CI]
     uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/docker-image.yml@main
