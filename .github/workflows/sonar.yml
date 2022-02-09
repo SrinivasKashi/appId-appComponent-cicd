@@ -38,11 +38,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify -DexcludedGroups="Smoke | Staging | LamdaTest | BrowserStack" org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.issuesReport.html.enable=true -Dsonar.login=${{ env.SONAR_TOKEN }} -Dsonar.projectKey=SrinivasKashi_appId-appComponent-cicd -X
       - name: Check with changed urls
-        run:  ls -lart build/sonar/report-task.txt           
+        run:  ls -lart target/sonar/report-task.txt           
       - name: Check with changed urls
-        run:  cat build/sonar/report-task.txt         
+        run:  cat target/sonar/report-task.txt         
       - name: Create report-task-https.txt with changed urls
-        run:  sed -i s/http\:/https\:/g build/sonar/report-task.txt        
+        run:  sed -i s/http\:/https\:/g target/sonar/report-task.txt       
       - name: SonarQube Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@master
         env:
