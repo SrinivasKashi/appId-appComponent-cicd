@@ -1,7 +1,10 @@
 name: Docker Image CI
 
 on:
-  workflow_call
+  workflow_call:
+    secrets: 
+      SNYK_TOKEN:
+        required: true
 #  push:
 #    branches: [ main ]
 #  pull_request:
