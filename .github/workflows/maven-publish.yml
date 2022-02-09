@@ -50,10 +50,15 @@ jobs:
         WHO_TO_TRUST: ${{ secrets.SNYK_TOKEN }}
       run: echo ${{ secrets.SNYK_TOKEN }}   
   Docker_Build:
+    with: 
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     needs: [CI]
     uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/docker-image.yml@main
+ 
   Sonar_Scan:
       uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/sonar.yml@main
+      with:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   trufflehogScan:
       name: Secret Scan Using Trufflehog
       runs-on: ubuntu-latest      
@@ -79,12 +84,6 @@ jobs:
           uses: actions/setup-java@v1
           with:
             java-version: 1.8
-      #  - name: Set up Maven
-       #   run: mvn -N io.takari:maven:wrapper -Dmaven=3.8.2
-       # - name: Build with Maven
-       #   run: |
-       #     mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-        #    mvn test -B
         - name: Upload to CoPilot
           run: bash <(curl -s https://copilot.blackducksoftware.com/ci/githubactions/scripts/upload)            
       
