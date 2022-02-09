@@ -24,15 +24,10 @@ jobs:
            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --sarif-file-output=snyk.sarif
-      - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: snyk.sarif
   snykIaSScan:
       name: SAST - Scan IaC Configs using Snyk
       runs-on: ubuntu-latest
       needs: [snykScan]
-      
       steps:
         - name: Check out the code
           uses: actions/checkout@v2
@@ -47,10 +42,6 @@ jobs:
             file: |
               manifests/deployment.yml
               manifests/service.yml
-        - name: Upload result to GitHub Code Scanning
-          uses: github/codeql-action/upload-sarif@v1
-          with:
-            sarif_file: snyk.sarif
   gitHubPakageImageBuild:
     name: Push Docker image to GitHub Package
     runs-on: ubuntu-latest
@@ -91,11 +82,11 @@ jobs:
           id: meta
           uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
           with:
-            images: ghcr.io/SrinivasKashi/appId-appComponent-cicd:latest
+            images: ghcr.io/SrinivasKashi/appid-appcomponent-cicd:latest
   
         - name: ghcr.io
           uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
           with:
             context: .
             push: true
-            tags: ghcr.io/SrinivasKashi/appId-appComponent-cicd:latest            
+            tags: ghcr.io/SrinivasKashi/appid-appcomponent-cicd:latest            
