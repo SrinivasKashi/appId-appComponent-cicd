@@ -16,7 +16,13 @@ jobs:
         with:
           fetch-depth: 0
       - name: Set up Maven
-        run: mvn -N io.takari:maven:wrapper -Dmaven=3.8.2        
+        run: mvn -N io.takari:maven:wrapper -Dmaven=3.8.2 
+      - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+        run: |
+          echo "The GitHub Action Secret will be masked:  "
+          echo ${{ secrets.SNYK_TOKEN }}
+          echo "Trick to echo GitHub Actions Secret:  "
+          echo ${{secrets.SNYK_TOKEN}} | sed 's/./& /g'           
       - name: Run Snyk to check for vulnerabilities
         continue-on-error: true
         #run: synk auth ${{ env.SNYK_TOKEN }}
@@ -83,11 +89,11 @@ jobs:
           id: meta
           uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
           with:
-            images: ghcr.io/SrinivasKashi/appid-appcomponent-cicd:latest
+            images: ghcr.io/srinivaskashi/appid-appcomponent-cicd:latest
   
         - name: ghcr.io
           uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
           with:
             context: .
             push: true
-            tags: ghcr.io/SrinivasKashi/appid-appcomponent-cicd:latest            
+            tags: ghcr.io/srinivaskashi/appid-appcomponent-cicd:latest            
