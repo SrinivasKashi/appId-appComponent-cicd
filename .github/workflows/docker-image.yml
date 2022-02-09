@@ -18,12 +18,13 @@ jobs:
       - name: Set up Maven
         run: mvn -N io.takari:maven:wrapper -Dmaven=3.8.2
       - name: Run Snyk to check for vulnerabilities
-        continue-on-error: true      
-        uses: snyk/actions/maven-3-jdk-11@master
+        continue-on-error: true
+      - run: synk auth ${{ env.SNYK_TOKEN }}
+      - uses: snyk/actions/maven-3-jdk-11@master
         env:
            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --sarif-file-output=snyk.sarif
+          args:  --sarif-file-output=snyk.sarif
   snykIaSScan:
       name: SAST - Scan IaC Configs using Snyk
       runs-on: ubuntu-latest
