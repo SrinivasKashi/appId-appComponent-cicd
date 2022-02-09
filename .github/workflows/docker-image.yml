@@ -19,20 +19,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Set up Maven
-        run: mvn -N io.takari:maven:wrapper -Dmaven=3.8.2 
-      - name: Step 1 - Echo out a GitHub Actions Secret to the logs
-        env: 
-          WHO_TO_TRUST: ${{ secrets.SNYK_TOKEN }}      
-        run: |
-          echo "The GitHub Action Secret will be masked:  "
-          echo ${{ secrets.SNYK_TOKEN }}
-          echo  ${{ env.WHO_TO_TRUST }}
-          echo "Trick to echo GitHub Actions Secret:  "
-          echo ${{secrets.SNYK_TOKEN}} | sed 's/./& /g'     
-      - name: Step 2 - GitHub Action if statement (true)
-        env: 
-          WHO_TO_TRUST: ${{ secrets.SNYK_TOKEN }}
-        run: echo ${{ secrets.SNYK_TOKEN }}         
+        run: mvn -N io.takari:maven:wrapper -Dmaven=3.8.2     
       - name: Run Snyk to check for vulnerabilities
         continue-on-error: true
         #run: synk auth ${{ env.SNYK_TOKEN }}
@@ -40,7 +27,7 @@ jobs:
         env:
            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: synk auth ${{ env.SNYK_TOKEN }} --sarif-file-output=snyk.sarif
+          args: --sarif-file-output=snyk.sarif
   snykIaSScan:
       name: SAST - Scan IaC Configs using Snyk
       runs-on: ubuntu-latest
