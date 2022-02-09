@@ -50,14 +50,14 @@ jobs:
         WHO_TO_TRUST: ${{ secrets.SNYK_TOKEN }}
       run: echo ${{ secrets.SNYK_TOKEN }}   
   Docker_Build:
-    with: 
+    secrets: 
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     needs: [CI]
     uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/docker-image.yml@main
  
   Sonar_Scan:
       uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/sonar.yml@main
-      with:
+      secrets:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   trufflehogScan:
       name: Secret Scan Using Trufflehog
