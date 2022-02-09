@@ -34,11 +34,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify -DexcludedGroups="Smoke | Staging | LamdaTest | BrowserStack" org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.issuesReport.html.enable=true -Dsonar.login=${{ env.SONAR_TOKEN }} -Dsonar.projectKey=SrinivasKashi_appId-appComponent-cicd -X
-   #   - name: SonarQube Quality Gate check
-   #     uses: sonarsource/sonarqube-quality-gate-action@master
-   #     env:
-   #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-   #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}             
-   #     timeout-minutes: 5     
-   #     with:
-   #       scanMetadataReportFile: target/sonar/report-task.txt  
+      - name: SonarQube Quality Gate check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}             
+        timeout-minutes: 5     
+        with:
+          scanMetadataReportFile: target/sonar/report-task.txt  
