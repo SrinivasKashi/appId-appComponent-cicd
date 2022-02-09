@@ -30,25 +30,7 @@ jobs:
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
-  Test:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-    - name: Step 1 - Echo out a GitHub Actions Secret to the logs
-      env: 
-        WHO_TO_TRUST: ${{ secrets.SNYK_TOKEN }}      
-      run: |
-        echo "The GitHub Action Secret will be masked:  "
-        echo ${{ secrets.SNYK_TOKEN }}
-        echo  ${{ env.WHO_TO_TRUST }}
-        echo "Trick to echo GitHub Actions Secret:  "
-        echo ${{secrets.SNYK_TOKEN}} | sed 's/./& /g'     
-    - name: Step 2 - GitHub Action if statement (true)
-      env: 
-        WHO_TO_TRUST: ${{ secrets.SNYK_TOKEN }}
-      run: echo ${{ secrets.SNYK_TOKEN }}   
+        
   Docker_Build:
     secrets: 
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
