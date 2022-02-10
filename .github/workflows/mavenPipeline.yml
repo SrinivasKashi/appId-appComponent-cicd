@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: foo
-        uses: ./github/actions/eplaction
+        uses: ./.github/actions/eplaction
         with:
           some_id: 'Hi EPL'
   CI:
