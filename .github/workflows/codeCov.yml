@@ -10,7 +10,6 @@ jobs:
   codeCov:
     name: Inspect - Using Codecov
     runs-on: ubuntu-latest
-    needs: [CI]
     steps:
       - name: Check out the code
         uses: actions/checkout@v1
