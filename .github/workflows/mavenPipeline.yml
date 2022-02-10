@@ -9,6 +9,16 @@ on:
  workflow_dispatch:
 
 jobs:
+
+  epl_job:
+    runs-on: ubuntu-latest
+    name: EPL Job
+    steps:
+      - uses: actions/checkout@v2
+      - id: foo
+        uses: ./github/actions/action@main
+        with:
+          some_id: 'Hi EPL'
   CI:
 
     runs-on: ubuntu-latest
