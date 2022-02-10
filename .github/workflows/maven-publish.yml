@@ -53,6 +53,11 @@ jobs:
           uses: edplato/trufflehog-actions-scan@master
           with:
             scanArguments: "--regex --entropy=False --max_depth=5"
+  CodeCov_Scan:
+    secrets: 
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    needs: [CI]
+    uses: SrinivasKashi/appId-appComponent-cicd/.github/workflows/codeCov.yml@main            
             
   blackduck:
       name: SCA Scan using BlackDuck
@@ -67,6 +72,4 @@ jobs:
           with:
             java-version: 1.8
         - name: Upload to CoPilot
-          run: bash <(curl -s https://copilot.blackducksoftware.com/ci/githubactions/scripts/upload)            
-      
-    
+          run: bash <(curl -s https://copilot.blackducksoftware.com/ci/githubactions/scripts/upload)
