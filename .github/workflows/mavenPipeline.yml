@@ -75,6 +75,7 @@ jobs:
   blackduck:
       name: SCA Scan using BlackDuck
       runs-on: ubuntu-latest
+      if: ${{ github.event_name == 'push' }}
       steps:
         - name: Check out the code
           uses: actions/checkout@v2
