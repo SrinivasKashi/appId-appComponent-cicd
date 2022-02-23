@@ -4,6 +4,3 @@ coverage:
       default:
         target: 80%    # the required coverage value
         threshold: 1%  # the leniency in hitting the target
-        informational: true
-  comment:
-    layout: "reach, diff, flags, files"        
