@@ -16,4 +16,8 @@ public class MyRestController {
     public String health() {
         return HELLO_WORLD;
     }
+	@GetMapping("/healths")
+	public String dummy(){
+	return HELLO_WORLD;
+	}
 }
