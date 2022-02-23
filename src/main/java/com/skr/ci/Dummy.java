@@ -2,7 +2,7 @@ package com.skr.ci;
 
 public class Dummy {
 
-	public testDummy {
+	public void testDummy {
 		System.out.println("Test");
 	}
 
