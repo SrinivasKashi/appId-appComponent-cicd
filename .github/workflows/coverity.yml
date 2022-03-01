@@ -23,4 +23,4 @@ jobs:
         email: ${{ env.COVERITY_SCAN_EMAIL }}
         token: ${{ env.COVERITY_SCAN_TOKEN }}
         build_language: 'java'
-        command: 'build'
+        command: 'mvn clean install -DskipTests=true'
