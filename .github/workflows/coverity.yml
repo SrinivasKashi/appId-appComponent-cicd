@@ -24,4 +24,4 @@ jobs:
         token: ${{ env.COVERITY_SCAN_TOKEN }}
         build_language: 'java'
         #command: 'mvn clean install -DskipTests=true'
-        command: 'mvn -B verify cobertura:cobertura'
+        command: 'mvn -B verify -DexcludedGroups="Smoke | Staging | LamdaTest | BrowserStack" cobertura:cobertura'
