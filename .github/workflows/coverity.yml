@@ -14,14 +14,26 @@ jobs:
   coverity:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: vapier/coverity-scan-action@v1
-      env:
-        COVERITY_SCAN_EMAIL: ${{ secrets.COVERITY_SCAN_EMAIL }}
-        COVERITY_SCAN_TOKEN: ${{ secrets.COVERITY_SCAN_TOKEN }}  
-      with:
-        email: ${{ env.COVERITY_SCAN_EMAIL }}
-        token: ${{ env.COVERITY_SCAN_TOKEN }}
-        build_language: 'java'
-        #command: 'mvn clean install -DskipTests=true'
-        command: 'mvn -B verify -DexcludedGroups="Smoke | Staging | LamdaTest | BrowserStack" cobertura:cobertura'
+      - name: Check out the code    
+        uses: actions/checkout@v2
+      - name: Set up JDK 8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2       
+      - name: Coverity Scan         
+        uses: vapier/coverity-scan-action@v1
+        env:
+          COVERITY_SCAN_EMAIL: ${{ secrets.COVERITY_SCAN_EMAIL }}
+          COVERITY_SCAN_TOKEN: ${{ secrets.COVERITY_SCAN_TOKEN }}  
+        with:
+          email: ${{ env.COVERITY_SCAN_EMAIL }}
+          token: ${{ env.COVERITY_SCAN_TOKEN }}
+          build_language: 'java'
+          #command: 'mvn clean install -DskipTests=true'
+          command: 'mvn -B verify -DexcludedGroups="Smoke | Staging | LamdaTest | BrowserStack" cobertura:cobertura'
