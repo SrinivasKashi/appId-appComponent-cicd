@@ -1,0 +1,25 @@
+name: Coverity Scan
+
+# We only want to test official release code, not every pull request.
+
+on:
+  workflow_call:
+    secrets: 
+      COVERITY_SCAN_EMAIL:
+        required: true
+      COVERITY_SCAN_TOKEN:
+        required: true
+
+jobs:
+  coverity:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: vapier/coverity-scan-action@v1
+      env:
+        COVERITY_SCAN_EMAIL: ${{ secrets.COVERITY_SCAN_EMAIL }}
+        COVERITY_SCAN_TOKEN: ${{ secrets.COVERITY_SCAN_TOKEN }}  
+      with:
+        email: ${{ env.COVERITY_SCAN_EMAIL }}
+        token: ${{ env.COVERITY_SCAN_TOKEN }}
+        build_language: 'java'
