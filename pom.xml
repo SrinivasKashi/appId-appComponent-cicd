@@ -38,6 +38,11 @@
 			<artifactId>spring-cloud-starter</artifactId>
 		</dependency>
 		<dependency>
+  <groupId>io.temporal</groupId>
+  <artifactId>temporal-sdk</artifactId>
+  <version>1.22.3</version>
+</dependency>
+		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.2</version>
