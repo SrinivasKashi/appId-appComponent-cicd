@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/skr")
 public class MyRestController {
 
-	private static final String HELLO_WORLD = "Mike Testing 123";
+	private static final String HELLO_WORLD = "Mike Testing 12345";
 
 	@GetMapping("/health")
     public String health() {
         return HELLO_WORLD;
     }
+	@GetMapping("/healths")
+	public String dummy(){
+	return HELLO_WORLD;
+	}
 }
