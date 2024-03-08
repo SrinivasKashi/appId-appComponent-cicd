@@ -7,7 +7,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.6.2</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.skr.ci</groupId>
 	<artifactId>appid-appcomponent-cicd</artifactId>
@@ -40,7 +40,7 @@
 		<dependency>
   <groupId>io.temporal</groupId>
   <artifactId>temporal-sdk</artifactId>
-  <version>1.22.3</version>
+  <version>1.23.0</version>
 </dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -176,7 +176,7 @@
 			            <format>html</format>
 			            <format>xml</format>
 			        </formats>
-			        <check />
+			        <check/>
 			    </configuration>
 			</plugin>			
 		</plugins>
